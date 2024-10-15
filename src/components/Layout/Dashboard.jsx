@@ -83,26 +83,25 @@ const Dashboard = () => {
     if (!validateFields()) {
       return;
     }
-
+  
     try {
       const response = await clienteAxios.post('/buy', {
         cellPhone,
         value,
         supplierId,
       });
+  
       const ticketResponse = await fetch(`https://back-veci.onrender.com/api/transaccion/${response.data.transactionalID}/ticket`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/pdf',
-        },
       });
-
+  
       if (!ticketResponse.ok) throw new Error('Error al obtener el ticket');
-
+  
       const blob = await ticketResponse.blob();
       const url = window.URL.createObjectURL(blob);
       setTicketData(url);
       setOpenTicketModal(true);
+  
       setCellPhone('');
       setValue('');
       setSupplierId('');
@@ -116,7 +115,7 @@ const Dashboard = () => {
       setOpenAlert(true);
     }
   };
-
+  
   const handleCloseTicketModal = () => {
     setOpenTicketModal(false);
     setTicketData(null);

@@ -228,22 +228,23 @@ const RecargasPage = () => {
     try {
       const response = await fetch(`https://back-veci.onrender.com/api/transaccion/${recharge.transactionalID}/ticket`, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/pdf'
-        }
       });
   
       if (!response.ok) throw new Error(`Error: ${response.status}`);
   
+      const contentType = response.headers.get('Content-Type');
+      if (contentType !== 'application/pdf') {
+        throw new Error(`Unexpected content type: ${contentType}`);
+      }
+  
       const blob = await response.blob();
-  
       const url = window.URL.createObjectURL(blob);
-  
       window.open(url, '_blank');
     } catch (error) {
       console.error("Error fetching ticket data:", error);
     }
   };
+  
 
 
   const formatPhoneNumber = (cellPhone) => {
