@@ -239,20 +239,11 @@ const RecargasPage = () => {
   
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-  
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      a.download = `ticket_${recharge.transactionalID}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      window.open(url, '_blank');
     } catch (error) {
       console.error("Error fetching ticket data:", error);
     }
   };
-  
   
 
 
