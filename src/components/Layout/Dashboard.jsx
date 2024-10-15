@@ -90,7 +90,7 @@ const Dashboard = () => {
         value,
         supplierId,
       });
-      const ticketResponse = await fetch(`http://localhost:5000/api/transaccion/${response.data.transactionalID}/ticket`, {
+      const ticketResponse = await fetch(`https://back-veci.onrender.com/api/transaccion/${response.data.transactionalID}/ticket`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/pdf',

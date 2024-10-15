@@ -226,7 +226,7 @@ const RecargasPage = () => {
 
   const handleOpenTicket = async (recharge) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/transaccion/${recharge.transactionalID}/ticket`, {
+      const response = await fetch(`https://back-veci.onrender.com/api/transaccion/${recharge.transactionalID}/ticket`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/pdf'
