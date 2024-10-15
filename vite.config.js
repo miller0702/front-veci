@@ -24,5 +24,13 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['axios', 'react', 'react-dom'],
+  },
+  server: {
+    port: 3000,
+    host: true 
+  },
+  preview: {
+    port: 8080,
+    host: true
   }
 })
