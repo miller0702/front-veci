@@ -244,8 +244,6 @@ const RecargasPage = () => {
       console.error("Error fetching ticket data:", error);
     }
   };
-  
-
 
   const formatPhoneNumber = (cellPhone) => {
     if (cellPhone.length === 10) {
