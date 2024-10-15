@@ -8,7 +8,8 @@ export default defineConfig({
     minify: 'esbuild',
     target: 'esnext',
     cssCodeSplit: true,
-    brotliSize: true,
+    brotliSize: false,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -18,6 +19,7 @@ export default defineConfig({
         },
       },
     },
+    parallel: true,
   },
   css: {
     devSourcemap: false,
@@ -27,10 +29,10 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    host: true 
+    host: true
   },
   preview: {
     port: 8080,
     host: true
   }
-})
+});
