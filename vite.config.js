@@ -10,7 +10,11 @@ export default defineConfig({
     cssCodeSplit: true,
     brotliSize: false,
     chunkSizeWarningLimit: 1000,
+    outDir: 'build',
     rollupOptions: {
+      input: {
+        main: 'index.html',
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
@@ -18,12 +22,6 @@ export default defineConfig({
           }
         },
       },
-    },
-      outDir: 'build',
-      rollupOptions: {
-        input: {
-          main: 'index.html',
-        },
     },
     parallel: true,
   },
